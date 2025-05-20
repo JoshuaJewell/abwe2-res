@@ -3,7 +3,11 @@ All scripts used for my year 2 ABWE project. I anticipate 3 primary steps will b
 
 ## Process
 ### 1. Transcription, Python
-Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._). Human oversight will be required to ensure transcription accuracy, and to reliably clean the data into CSV for insertion into database. 
+Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._). Human oversight will be required to ensure transcription accuracy, and to reliably clean the data into CSV for insertion into database.
+
+My favourite part of this is when it acknowledges after some time:<br />
+`You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset`<br />
+This shouldn't be difficult to implement, but I really can't see it providing a significant enough boost with such a small dataset. Nonetheless, this is a potential area for performance improvement alongside compilation/IO-aware attention/dusting off the RTX 3060. 
 
 ### 2. Storage, SQL
 Database will be configured and data inserted into it. ERD will be displayed at later date, but basically: Day has many Batch (mean dry/wet bulb readings), Batch has many Dog (size, bark_freq, elim_freq), Dog has Behaviours (mode, timestamps).
