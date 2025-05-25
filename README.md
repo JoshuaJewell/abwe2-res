@@ -18,8 +18,8 @@ Analysis will be done by graphing the relationship between proportion of time sp
 ## How to
 Step-by-step instructions to reproduce my method on various systems. Assumes Git, Python, pip, and python3-venv are installed.
 
-## Debian (I did this)
-### Step 1: Initialise repo
+### Debian (I did this)
+#### Step 1: Initialise repo
 Clone, enter, and install requirements for the repo:
 ```
 git clone https://github.com/JoshuaJewell/abwe2-res.git
@@ -28,15 +28,15 @@ python3 -m venv venv
 pip install torch transformers
 ```
 
-### Step 2: Transcribe recordings
+#### Step 2: Transcribe recordings
 Copy recordings and run script:
 ```
 cp -r /path/to/recordings /path/to/abwe2-res/transcription/recordings
 python ./transcription/whisper.py
 ```
 
-## Windows (You might want to do this)
-### Step 1: Initialise repo
+### Windows (You might want to do this)
+#### Step 1: Initialise repo
 Clone, enter, and install requirements for the repo:
 ```
 git clone https://github.com/JoshuaJewell/abwe2-res.git
@@ -45,14 +45,14 @@ python -m venv venv
 venv\Scripts\pip.exe install torch transformers
 ```
 
-### Step 2: Transcribe recordings
+#### Step 2: Transcribe recordings
 Copy recordings and run script:
 ```
 xcopy /E /I C:\path\to\recordings C:\path\to\abwe2-res\transcription\recordings
 python .\transcription\whisper.py
 ```
 
-## MacOS (Ew)
+### MacOS (Ew)
 Basically use the Debian steps... I think.
 
 ## References
