@@ -7,7 +7,7 @@ Audio collected from the site, containing details of behaviours performed, meter
 
 My favourite part of this is when it acknowledges after some time:<br />
 `You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset`<br />
-This shouldn't be difficult to implement, but I really can't see it providing a significant enough boost with such a small dataset. Nonetheless, this is a potential area for performance improvement alongside compilation/IO-aware attention/dusting off the RTX 3060. 
+This shouldn't be difficult to implement, but I really can't see it providing a significant enough boost with such a small dataset. Nonetheless, this is a potential area for performance improvement alongside compilation/IO-aware attention/dusting off the RTX 3060.
 
 ### 2. Storage, SQL
 Database will be configured and data inserted into it. ERD will be displayed at later date, but basically: Day has many Batch (mean dry/wet bulb readings), Batch has many Dog (size, bark_freq, elim_freq), Dog has Behaviours (mode, timestamps).
@@ -36,8 +36,24 @@ python ./transcription/whisper.py
 ```
 
 ## Windows (You might want to do this)
+### Step 1: Initialise repo
+Clone, enter, and install requirements for the repo:
+```
+git clone https://github.com/JoshuaJewell/abwe2-res.git
+cd abwe2-res
+python -m venv venv
+venv\Scripts\pip.exe install torch transformers
+```
+
+### Step 2: Transcribe recordings
+Copy recordings and run script:
+```
+xcopy /E /I C:\path\to\recordings C:\path\to\abwe2-res\transcription\recordings
+python .\transcription\whisper.py
+```
 
 ## MacOS (Ew)
+Basically use the Debian steps... I think.
 
 ## References
 Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.
