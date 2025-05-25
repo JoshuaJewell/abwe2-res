@@ -15,5 +15,29 @@ Database will be configured and data inserted into it. ERD will be displayed at 
 ### 3. Analysis, R
 Analysis will be done by graphing the relationship between proportion of time spent playing to not-playing per dog against heat index, alongside some descriptive statistics and other fun graphs.
 
+## How to
+Step-by-step instructions to reproduce my method on various systems. Assumes Git, Python, pip, and python3-venv are installed.
+
+## Debian (I did this)
+### Step 1: Initialise repo
+Clone, enter, and install requirements for the repo:
+```
+git clone https://github.com/JoshuaJewell/abwe2-res.git
+cd abwe2-res
+python3 -m venv venv
+pip install torch transformers
+```
+
+### Step 2: Transcribe recordings
+Copy recordings and run script:
+```
+cp -r /path/to/recordings /path/to/abwe2-res/transcription/recordings
+python ./transcription/whisper.py
+```
+
+## Windows (You might want to do this)
+
+## MacOS (Ew)
+
 ## References
 Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.
