@@ -9,8 +9,48 @@ My favourite part of this is when it acknowledges after some time:<br />
 `You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset`<br />
 This shouldn't be difficult to implement, but I really can't see it providing a significant enough boost with such a small dataset. Nonetheless, this is a potential area for performance improvement alongside compilation/IO-aware attention/dusting off the RTX 3060.
 
-### 2. Storage, SQL
-Database will be configured and data inserted into it. ERD will be displayed at later date, but basically: Day has many Batch (mean dry/wet bulb readings), Batch has many Dog (size, bark_freq, elim_freq), Dog has Behaviours (mode, timestamps).
+### 2. Storage, SQL (until it wasn't)
+Just use a spreadsheet, they said. It'll be easier, they said...
+```
+# What toy did the dog play with?
+=IFERROR(MID(
+  OFFSET(INDIRECT(H2),0,4),
+  FIND(", ",OFFSET(INDIRECT(H2),0,4))+2,
+  LEN(OFFSET(INDIRECT(H2),0,4))
+),"")
+
+# How long did the dog sit down?
+=SUMIF(
+  OFFSET(INDIRECT($H2), 1, 2, $I2, 1),
+  M$1, OFFSET(INDIRECT($H2), 1, 4, $I2, 1)
+)
+
+# How hot was it on average?
+=AVERAGE(
+  VALUE(TRIM(MID(
+    OFFSET(INDIRECT(H2), 0, 1),
+    FIND(",", OFFSET(INDIRECT(H2), 0, 1)) + 1,
+    FIND(",", OFFSET(INDIRECT(H2), 0, 1) & ",",
+    FIND(",", OFFSET(INDIRECT(H2), 0, 1)) + 1)
+    -FIND(",", OFFSET(INDIRECT(H2), 0, 1)) - 1))),
+  VALUE(TRIM(MID(
+    OFFSET(INDIRECT(H2), 0, 2),
+    FIND(",", OFFSET(INDIRECT(H2), 0, 2)) + 1,
+    FIND(",", OFFSET(INDIRECT(H2), 0, 2) & ",",
+    FIND(",", OFFSET(INDIRECT(H2), 0, 2)) + 1)
+    -FIND(",", OFFSET(INDIRECT(H2), 0, 2)) - 1)))
+)
+
+# What was the relative humidity?
+=100*EXP(1.8096+((17.2694*Z2)/(237.3+Z2)))-(0.0007866*998.3*(Y2-Z2)*(1+(Z2/610))))
+/(EXP(1.8096+((17.2694*Y2)/(237.3+Y2)))
+
+# What was the heat index?
+=(-8.78469475556)+(1.61139411*Y2)+(2.33854883889*AB2)
++(-0.14611605*Y2*AB2)+(-0.012308094*(Y2^2))+(-0.0164248277778*(AB2^2))
++(0.002211732*(Y2^2)*AB2)+(0.00085282*Y2*(AB2^2))
++(-0.000003582*(Y2^2)*(AB2^2))
+```
 
 ### 3. Analysis, R
 Analysis will be done by graphing the relationship between proportion of time spent playing to not-playing per dog against heat index, alongside some descriptive statistics and other fun graphs.
