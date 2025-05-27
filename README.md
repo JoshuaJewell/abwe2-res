@@ -3,7 +3,7 @@ All scripts used for my year 2 ABWE project. I anticipate 3 primary steps will b
 
 ## Process
 ### 1. Transcription, Python
-Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._). Human oversight will be required to ensure transcription accuracy, and to reliably clean the data.
+Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._ 2023). Human oversight will be required to ensure transcription accuracy, and to reliably clean the data.
 
 My favourite part of this is when it acknowledges after some time:<br />
 `You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset`<br />
