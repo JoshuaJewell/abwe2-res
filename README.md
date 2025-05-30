@@ -69,15 +69,10 @@ Expected inputs:
 > head(corrdata)
     Size ToyState PantState    DL DD DH   DF AS    AH    AD NV NE NF Location Day  Hour Cloud HeatIndex TotalDur TotalPlay
 1 Medium        0         0 98.00  0  0 0.00  0  0.00 29.74  0  0  0 TQ275839   5 16:28     5        36   127.74     29.74
-
 2 Medium        0         0 89.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839   5 16:32     7        36    89.00      0.00
-
 3  Small        1         0 30.00  0  0 0.00  2  0.00  0.00  0  0  0 TQ275839   5 16:32     7        36    32.00      2.00
-
 4  Small        0         0 76.40  0  0 6.48  0  0.00 16.00  0  0  0 TQ275839   5 16:36     7        37    98.88     16.00
-
 5 Medium        1         0 36.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839   5 16:59     7        36    36.00      0.00
-
 6  Large        0         0 20.06  0  0 0.00  0 73.48  0.00  0  0  1 TQ275839   5 16:59     7        36    93.54     73.48
 
 > head(famddata)
