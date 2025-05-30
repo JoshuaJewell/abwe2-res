@@ -53,10 +53,45 @@ Just use a spreadsheet, they said. It'll be easier, they said...
 ```
 
 ### 3. Analysis, R
-Analysis will be done by graphing the relationship between proportion of time spent playing to not-playing per dog against heat index, alongside some descriptive statistics and other fun graphs.
+Analysis mainly performed in GraphPad Prism, however beta regression, correlation matrix, and FAMD were done in R.
+
+Expected inputs:
+```
+> head(propdata)
+  Temperature Proportion
+1          36       0.23
+2          36       0.00
+3          36       0.06
+4          37       0.16
+5          36       0.00
+6          36       0.79
+
+> head(corrdata)
+    Size ToyState PantState    DL DD DH   DF AS    AH    AD NV NE NF Location Day  Hour Cloud HeatIndex TotalDur TotalPlay
+1 Medium        0         0 98.00  0  0 0.00  0  0.00 29.74  0  0  0 TQ275839   5 16:28     5        36   127.74     29.74
+
+2 Medium        0         0 89.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839   5 16:32     7        36    89.00      0.00
+
+3  Small        1         0 30.00  0  0 0.00  2  0.00  0.00  0  0  0 TQ275839   5 16:32     7        36    32.00      2.00
+
+4  Small        0         0 76.40  0  0 6.48  0  0.00 16.00  0  0  0 TQ275839   5 16:36     7        37    98.88     16.00
+
+5 Medium        1         0 36.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839   5 16:59     7        36    36.00      0.00
+
+6  Large        0         0 20.06  0  0 0.00  0 73.48  0.00  0  0  1 TQ275839   5 16:59     7        36    93.54     73.48
+
+> head(famddata)
+    Size ToyState PantState    DL DD DH   DF AS    AH    AD NV NE NF Location Cloud HeatIndex
+1 Medium        0         0 98.00  0  0 0.00  0  0.00 29.74  0  0  0 TQ275839     5        36
+2 Medium        0         0 89.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839     7        36
+3  Small        1         0 30.00  0  0 0.00  2  0.00  0.00  0  0  0 TQ275839     7        36
+4  Small        0         0 76.40  0  0 6.48  0  0.00 16.00  0  0  0 TQ275839     7        37
+5 Medium        1         0 36.00  0  0 0.00  0  0.00  0.00  0  0  0 TQ275839     7        36
+6  Large        0         0 20.06  0  0 0.00  0 73.48  0.00  0  0  1 TQ275839     7        36
+```
 
 ## How to
-Step-by-step instructions to reproduce my method on various systems. Assumes Git, Python, pip, and python3-venv are installed.
+Step-by-step instructions to reproduce my method on various systems. Assumes Git, Python, pip, python3-venv, R (v4.4 or higher), and RStudio are installed.
 
 ### Debian (I did this)
 #### Step 1: Initialise repo
@@ -64,6 +99,7 @@ Clone, enter, and install requirements for the repo:
 ```
 git clone https://github.com/JoshuaJewell/abwe2-res.git
 cd abwe2-res
+
 python3 -m venv venv
 pip install torch transformers
 ```
@@ -74,6 +110,27 @@ Copy recordings and run script:
 cp -r /path/to/recordings /path/to/abwe2-res/transcription/recordings
 python ./transcription/whisper.py
 ```
+
+#### Step 3: Clean data
+Paste csv data from transcriptions.txt into a spreadsheet:
+```
+ctrl-c
+ctrl-v
+``` 
+Then spend a couple hours filtering out your unnecessary thoughts from the data and formatting for spreadsheet to take care of (as above).
+
+#### Step 4: Analyse
+Open breg-corr-famd.R in RStudio. Install requirements:
+```
+> install.packages(c("corrplot", "FactoMineR", "factoextra", "lmtest", "sandwich"))
+```
+Adjust paths in breg-corr-famd.R:
+```
+propdata <- read.csv('/path/to/propdata.csv')
+corrdata <- read.csv('/path/to/corrdata.csv')
+famddata <- read.csv('/path/to/famddata.csv')
+```
+Run script.
 
 ### Windows (You might want to do this)
 #### Step 1: Initialise repo
@@ -92,8 +149,26 @@ xcopy /E /I C:\path\to\recordings C:\path\to\abwe2-res\transcription\recordings
 python .\transcription\whisper.py
 ```
 
-### MacOS (Ew)
+#### Step 3: Clean data
+Paste csv data from transcriptions.txt into a spreadsheet and format accordingly.
+
+#### Step 4: Analyse
+Open breg-corr-famd.R in RStudio. Install requirements:
+```
+> install.packages(c("corrplot", "FactoMineR", "factoextra", "lmtest", "sandwich"))
+```
+Adjust paths in breg-corr-famd.R:
+```
+propdata <- read.csv('/path/to/propdata.csv')
+corrdata <- read.csv('/path/to/corrdata.csv')
+famddata <- read.csv('/path/to/famddata.csv')
+```
+Run script.
+
+### MacOS
 Basically use the Debian steps... I think.
 
 ## References
-Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.
+Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.<br />
+GraphPad Prism version 10.4.2 for Windows, GraphPad Software, Boston, Massachusetts USA, www.graphpad.com<br />
+Pagès, J. (2004) ‘Analyse factorielle de données mixtes’, Revue de Statistique Appliquée, 52(4), 93–111.
