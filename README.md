@@ -3,7 +3,7 @@ All scripts used for my year 2 ABWE project. I anticipate 3 primary steps will b
 
 ## Process
 ### 1. Transcription, Python
-Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._ 2023). Human oversight will be required to ensure transcription accuracy, and to reliably clean the data.
+Audio collected from the site, containing details of behaviours performed, meterological values, and covariates will be transcribed with timestamps using [Whisper Distil Large v3](https://huggingface.co/distil-whisper/distil-large-v3) (Gandhi _et al._ 2023). Human oversight was required to ensure transcription accuracy, and to reliably clean the data.
 
 My favourite part of this is when it acknowledges after some time:<br />
 `You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset`<br />
@@ -41,11 +41,11 @@ Just use a spreadsheet, they said. It'll be easier, they said...
     -FIND(",", OFFSET(INDIRECT(H2), 0, 2)) - 1)))
 )
 
-# What was the relative humidity?
+# What was the relative humidity? (Abbott and Tabony 1985)
 =100*EXP(1.8096+((17.2694*Z2)/(237.3+Z2)))-(0.0007866*998.3*(Y2-Z2)*(1+(Z2/610))))
 /(EXP(1.8096+((17.2694*Y2)/(237.3+Y2)))
 
-# What was the heat index?
+# What was the heat index? (Rothfusz 1990)
 =(-8.78469475556)+(1.61139411*Y2)+(2.33854883889*AB2)
 +(-0.14611605*Y2*AB2)+(-0.012308094*(Y2^2))+(-0.0164248277778*(AB2^2))
 +(0.002211732*(Y2^2)*AB2)+(0.00085282*Y2*(AB2^2))
@@ -164,6 +164,10 @@ Run script.
 Basically use the Debian steps... I think.
 
 ## References
-Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.<br />
-GraphPad Prism version 10.4.2 for Windows, GraphPad Software, Boston, Massachusetts USA, www.graphpad.com<br />
-Pagès, J. (2004) ‘Analyse factorielle de données mixtes’, Revue de Statistique Appliquée, 52(4), 93–111.
+- Abbott, P.F. and Tabony, R.C. (1985) ‘The estimation of humidity parameters’, _Meteorological Magazine_, 114(1351), 49–56.
+- Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.
+- GraphPad Software Inc. (2023) _GraphPad Prism_ (Version 10.4.2 for Windows), available: http://www.graphpad.com.
+- Judd, C.M., McClelland, G.H., and Ryan, C.S. (2011) _Data Analysis_ [online], 0 ed., Routledge, available: https://doi.org/10.4324/9780203892053.
+- Pagès, J. (2004) ‘Analyse factorielle de données mixtes’, _Revue de Statistique Appliquée_, 52(4), 93–111.
+- Rothfusz, L. (1990) ‘The heat index “equation”or more than you ever wanted to know about heat index: National weather service southern region technical attachment sr/ssd 90-23’, _Fort Worth: National Weather Service_, 1–2.
+
