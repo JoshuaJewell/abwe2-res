@@ -165,9 +165,14 @@ Basically use the Debian steps... I think.
 
 ## References
 - Abbott, P.F. and Tabony, R.C. (1985) ‘The estimation of humidity parameters’, _Meteorological Magazine_, 114(1351), 49–56.
+- Francois Husson, Julie Josse, Sebastien Le, Jeremy Mazet (2006) ‘FactoMineR: Multivariate Exploratory Data Analysis and Data Mining’, available: https://doi.org/10.32614/CRAN.package.FactoMineR.
 - Gandhi, S., Platen, P. von, and Rush, A.M. (2023) ‘Distil-Whisper: Robust Knowledge Distillation via Large-Scale Pseudo Labelling’, available: https://doi.org/10.48550/arXiv.2311.00430.
 - GraphPad Software Inc. (2023) _GraphPad Prism_ (Version 10.4.2 for Windows), available: http://www.graphpad.com.
+- Hothorn, T., Zeileis, A., Farebrother, R.W., and Cummins, C. (1999) ‘lmtest: Testing Linear Regression Models’, available: https://doi.org/10.32614/CRAN.package.lmtest.
 - Judd, C.M., McClelland, G.H., and Ryan, C.S. (2011) _Data Analysis_ [online], 0 ed., Routledge, available: https://doi.org/10.4324/9780203892053.
+- Kassambara, A. and Mundt, F. (2016) ‘factoextra: Extract and Visualize the Results of Multivariate Data Analyses’, available: https://doi.org/10.32614/CRAN.package.factoextra.
 - Pagès, J. (2004) ‘Analyse factorielle de données mixtes’, _Revue de Statistique Appliquée_, 52(4), 93–111.
 - Rothfusz, L. (1990) ‘The heat index “equation”or more than you ever wanted to know about heat index: National weather service southern region technical attachment sr/ssd 90-23’, _Fort Worth: National Weather Service_, 1–2.
+- Wei, T. and Simko, V. (2010) ‘corrplot: Visualization of a Correlation Matrix’, available: https://doi.org/10.32614/CRAN.package.corrplot.
+- Zeileis, A. and Lumley, T. (2004) ‘sandwich: Robust Covariance Matrix Estimators’, available: https://doi.org/10.32614/CRAN.package.sandwich.
 
